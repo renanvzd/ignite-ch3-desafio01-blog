@@ -69,6 +69,10 @@ export default function Home(): JSX.Element {
             </div>
           </div>
         </section>
+
+        <div className={styles.loadMorePosts}>
+          <p>Carregar mais posts</p>
+        </div>
       </main>
     </>
   );

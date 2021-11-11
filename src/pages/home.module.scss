@@ -1,1 +1,48 @@
-// TODO
+.contentContainer {
+
+  .hero {
+    width: 700px;
+    height: 108px;
+    margin: 70px 0px 50px 370px;
+    font-family: Inter;
+
+    h1 {
+      color: #F8F8F8;
+      font-size: 28px;
+      text-align: justify;
+      line-height: 33.89px;
+      font-weight: 700;
+    }
+
+    p {
+      color: #D7D7D7;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 41.78px;
+    }
+  }
+
+  .subsection {
+    width: 450px;
+    height: 20px;
+    color: #BBBBBB;
+    margin-top: 15px;
+
+    .schedule {
+      padding-right: 30px;
+      display: inline-block;
+
+      span {
+        padding-left: 5px;
+      }
+    }
+
+    .author {
+      display: inline-block;
+
+      span {
+        padding-left: 5px;
+      }
+    }
+  }
+}

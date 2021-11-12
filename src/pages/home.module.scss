@@ -2,16 +2,23 @@
 
   .hero {
     width: 700px;
-    height: 108px;
+    height: 400px;
     margin: 70px 0px 50px 370px;
     font-family: Inter;
 
-    h1 {
-      color: #F8F8F8;
-      font-size: 28px;
-      text-align: justify;
-      line-height: 33.89px;
-      font-weight: 700;
+    .containerPost {
+
+      & + .containerPost {
+        margin-top: 70px;
+      }
+
+      .titlePost {
+        color: #F8F8F8;
+        font-size: 28px;
+        text-align: justify;
+        line-height: 33.89px;
+        font-weight: 700;
+      }
     }
 
     p {
@@ -46,15 +53,27 @@
     }
   }
 
-  .loadMorePosts {
-    margin-left: 370px;
-    padding-top: 30px;
-
-    p {
-      color: #FF57B2;
-      font-family: Inter;
-      font-size: 20px;
+    button {
+      color: var(--highlight);
+      margin-top: 4rem;
       font-weight: 600;
+      font-size: 1.125;
+      line-height: 1.375rem;
+      transition: filter 0.2s;
+
+      &:hover {
+        filter: brightness(0.8);
+      }
+
+      .loadMorePosts{
+        background-color: red;
+        p {
+          padding: 15px;
+          color: #FF57B2;
+          font-family: Inter;
+          font-size: 20px;
+          font-weight: 600;
+        }
+      }
     }
   }
-}

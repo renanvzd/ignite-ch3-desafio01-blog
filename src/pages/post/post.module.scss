@@ -1,1 +1,89 @@
-// TODO
+.contentContainer {
+
+  .banner {
+    width: 100%;
+    max-height: 25rem;
+    object-fit: cover;
+    margin-top: 4rem;
+  }
+
+
+  .hero {
+    width: 700px;
+    margin: 70px 0px 50px 370px;
+    font-family: Inter;
+
+    .containerPost {
+      .titlePost {
+        color: #F8F8F8;
+        font-size: 48px;
+        text-align: justify;
+        line-height: 33.89px;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .subsection {
+    width: 850px;
+    height: 20px;
+    color: #BBBBBB;
+    margin-top: 30px;
+
+    .schedule {
+      display: inline-block;
+
+
+      span {
+        padding-left: 7px;
+        padding-right: 20px;
+        font-size: 16px;
+      }
+
+    }
+
+    .author {
+      display: inline-block;
+
+      span {
+        padding-left: 2px;
+        padding-right: 20px;
+        font-size: 16px;
+      }
+    }
+
+    .timeReading {
+      display: inline-block;
+
+      span {
+        padding-left: 7px;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .containerContent {
+
+    margin: 70px 50px 50px 200px;
+    font-family: Inter;
+
+    & + .containerContent {
+      margin-bottom: 100px;
+    }
+
+    .postContent {
+      margin-right: 15%;
+
+      .headerPost {
+        font-size: 30px;
+      }
+
+      .contentBody {
+        padding-top: 3rem;
+        font-size: 18px;
+        text-align: justify;
+        line-height: 28px;
+      }
+    }
+  }
+}

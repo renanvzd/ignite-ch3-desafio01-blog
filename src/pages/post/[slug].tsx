@@ -15,6 +15,7 @@ import styles from './post.module.scss';
 import commonStyles from '../../styles/common.module.scss';
 
 import { formatDate } from '../../utils';
+import Comments from '../../components/Comments';
 
 interface Post {
   first_publication_date: string | null;
@@ -111,6 +112,8 @@ export default function Post({ post, preview }: PostProps): JSX.Element {
             </section>
           );
         })}
+
+        <Comments />
 
         {preview && (
           <aside>

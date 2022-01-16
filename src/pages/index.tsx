@@ -7,6 +7,8 @@ import { FiUser } from 'react-icons/fi';
 import Link from 'next/link';
 import { getPrismicClient } from '../services/prismic';
 import styles from './home.module.scss';
+import commonStyles from '../styles/common.module.scss';
+
 import { formatDate } from '../utils';
 
 interface Post {
@@ -26,9 +28,13 @@ interface PostPagination {
 
 interface HomeProps {
   postsPagination: PostPagination;
+  preview: boolean;
 }
 
-export default function Home({ postsPagination }: HomeProps): JSX.Element {
+export default function Home({
+  postsPagination,
+  preview,
+}: HomeProps): JSX.Element {
   const [nextPage, setNextPage] = useState<string>(postsPagination.next_page);
 
   const formattedPosts = postsPagination.results.map(post => {
@@ -90,12 +96,20 @@ export default function Home({ postsPagination }: HomeProps): JSX.Element {
             </button>
           )}
         </section>
+
+        {preview && (
+          <aside>
+            <Link href="/api/exit-preview">
+              <a className={commonStyles.preview}>Sair do modo Preview</a>
+            </Link>
+          </aside>
+        )}
       </main>
     </>
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const prismic = getPrismicClient();
 
   const postsResponse = await prismic.query(
@@ -126,6 +140,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       postsPagination,
+      preview,
     },
   };
 };

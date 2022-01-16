@@ -9,6 +9,9 @@ import Prismic from '@prismicio/client';
 import { RichText } from 'prismic-dom';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
+
 import { getPrismicClient } from '../../services/prismic';
 
 import styles from './post.module.scss';
@@ -19,6 +22,7 @@ import Comments from '../../components/Comments';
 
 interface Post {
   first_publication_date: string | null;
+  last_publication_date: string | null;
   data: {
     title: string;
     subtitle: string;
@@ -81,6 +85,20 @@ export default function Post({
 
   const timeEstimmed = Math.ceil(totalWords / 200);
 
+  const isPostEdited =
+    post.first_publication_date !== post.last_publication_date;
+
+  let editionDate;
+  if (isPostEdited) {
+    editionDate = format(
+      new Date(post.last_publication_date),
+      "'* editado em' dd MMM yyyy', às' H':'m",
+      {
+        locale: ptBR,
+      }
+    );
+  }
+
   return (
     <>
       <Head>
@@ -111,6 +129,9 @@ export default function Post({
                   <FiClock />
                   <span>{timeEstimmed} min</span>
                 </time>
+              </div>
+              <div className={styles.textEdited}>
+                {isPostEdited && <span>{editionDate}</span>}
               </div>
             </div>
           </div>
@@ -217,6 +238,7 @@ export const getStaticProps: GetStaticProps = async ({
   const post = {
     uid: response.uid,
     first_publication_date: response.first_publication_date,
+    last_publication_date: response.last_publication_date,
     data: {
       title: response.data.title,
       subtitle: response.data.subtitle,
